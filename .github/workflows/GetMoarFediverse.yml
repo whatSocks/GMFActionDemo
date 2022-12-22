@@ -1,0 +1,16 @@
+name: GetMoarFediverse
+
+on:
+  schedule:
+    - cron: '*/15 * * * *'
+  workflow_dispatch:
+
+jobs:
+  moar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: chdorner/GetMoarFediverse-action@main
+        with:
+          config_file: ${{ github.workspace }}/config.json
+          api_key: ${{ secrets.FAKERELAY_APIKEY }}
